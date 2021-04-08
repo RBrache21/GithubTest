@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 
 import Image from 'react-bootstrap/Image';
 import Table from 'react-bootstrap/Table';
-import useGithubApi from '../services/github-api';
+import { Link } from 'react-router-dom';
+import useGithubApi from '../../services/github-api';
 
-const UserTable = () => {
+const UserList = () => {
   const [users, setUsers] = useState([]);
   const { loading, error, fetchUsers } = useGithubApi();
   // Fetching data from the github API
@@ -36,6 +37,7 @@ const UserTable = () => {
             <th>Id</th>
             <th>Avatar</th>
             <th>Username</th>
+            <th>Detail View</th>
           </tr>
         </thead>
         <tbody>
@@ -51,6 +53,7 @@ const UserTable = () => {
                 />
               </td>
               <td>{user.login}</td>
+              <td>{<Link to={`/users/${user.login}`}>View</Link>}</td>
             </tr>
           ))}
         </tbody>
@@ -59,4 +62,4 @@ const UserTable = () => {
   );
 };
 
-export default UserTable;
+export default UserList;
