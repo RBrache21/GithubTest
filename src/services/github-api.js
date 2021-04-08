@@ -23,10 +23,26 @@ const useGithubApi = () => {
     }
   };
 
+  const fetchUserInfo = async (limit, offset) => {
+    try {
+      setLoading(true);
+      setError(null);
+      const { data: userInfo } = await octokit.rest.users.getByUsername({
+        username: 'RBrache21'
+      }); 
+      return userInfo;
+    } catch (error) {
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return {
     loading,
     error,
     fetchUsers,
+    fetchUserInfo
   };
 };
 

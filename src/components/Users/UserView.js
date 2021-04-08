@@ -6,17 +6,17 @@ import { useParams } from 'react-router';
 import useGithubApi from '../../services/github-api';
 
 const UserView = () => {
-  const [users, setUsers] = useState([]);
+  const [user, setUser] = useState([]);
   const params = useParams();
-  const { loading, error, fetchUsers } = useGithubApi();
+  const { loading, error, fetchUsers, fetchUserInfo } = useGithubApi();
   // Fetching data from the github API
-  const getTableData = async () => {
-    const result = await fetchUsers();
-    setUsers(result);
+  const getUserData = async () => {
+    const result = await fetchUserInfo();
+    setUser(result);
   };
 
   useEffect(() => {
-    getTableData();
+    getUserData();
   }, []);
 
   if (loading) {
@@ -26,11 +26,17 @@ const UserView = () => {
     return (
       <div>
         <p>Theres was an error {error.message}</p>
-        <button onClick={getTableData}>Retry</button>
+        <button onClick={getUserData}>Retry</button>
       </div>
     );
   }
-  return <div>{params.username}</div>;
+  return  <div>
+  {params.username}
+  <div>{`RBrache21 Followers: ${user.followers}`}</div>
+  <div>{`RBrache21 Following: ${user.following}`}</div>
+  <div>{`RBrache21 Public Repos: ${user.public_repos}`}</div>
+  {console.log(user)}
+  </div>
 };
 
 export default UserView;
