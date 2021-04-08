@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 import './App.css';
 import UserTable from './components/UserTable';
-import SearchBar from './components/SearchBar';
-// import EnhancedTable from './components/Table';
+// import SearchBar from './components/SearchBar';
+import HomePage from './components/HomePage';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import { users } from './users';
 
 
 class App extends Component {
@@ -13,8 +13,8 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Github Project</h1>
-        <SearchBar />
-        <UserTable/>
+        <Route exact path='/' component={HomePage} />
+        <Route exact path='/users' component={UserTable} />
       </div>
     );
   }
