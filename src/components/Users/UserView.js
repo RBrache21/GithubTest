@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useParams } from 'react-router';
 import useGithubApi from '../../services/github-api';
 import { makeStyles } from '@material-ui/core/styles';
@@ -88,40 +89,13 @@ const UserView = () => {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
-          Repos
-        </Button>
-        <Button size="small" color="primary">
-          Following
-        </Button>
-        <Button size="small" color="primary">
-          Followers
-        </Button>
+        <Link to={`/users/${user.login}/repos`}><Button size="small" color="primary">Repos</Button></Link>
+        <Button size="small" color="primary">Following</Button>
+        <Button size="small" color="primary">Followers</Button>
       </CardActions>
     </Card>
-    {console.log(user)}
   </div>
 };
 
 export default UserView;
 
-
-
-
-
-
-
-
-// <div>
-//       <div>{`${params.username}'s general info`}</div>
-//       <div>{`Name: ${user.name}`}</div>
-//       <div>{`Email: ${user.email}`}</div>
-//       <div>{`Bio: ${user.bio}`}</div>
-//       <div>{`Blog: ${user.blog}`}</div>
-//     </div>
-//     <div>
-//       <div>{`${params.username}'s repo info`}</div>
-//       <div>{`Public Repos: ${user.public_repos}`}</div>
-//       <div>{`Followers: ${user.followers}`}</div>
-//       <div>{`Following: ${user.following}`}</div>
-//     </div>

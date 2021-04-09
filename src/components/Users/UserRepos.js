@@ -27,7 +27,9 @@ const UserRepos = () => {
       </div>
     );
   }
-  return  <div>{console.log(repos)}</div>
+  return  <div>{repos.map((repo, i) =>(
+    <div>{repo.full_name}</div>
+  ))}</div>
 };
 
 export default UserRepos;
