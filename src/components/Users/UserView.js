@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from 'react';
-
-import Image from 'react-bootstrap/Image';
-import Table from 'react-bootstrap/Table';
 import { useParams } from 'react-router';
 import useGithubApi from '../../services/github-api';
 
 const UserView = () => {
   const [user, setUser] = useState([]);
   const params = useParams();
-  const { loading, error, fetchUsers, fetchUserInfo } = useGithubApi();
+  const { loading, error, fetchUserInfo } = useGithubApi();
   // Fetching data from the github API
   const getUserData = async () => {
-    const result = await fetchUserInfo();
+    const result = await fetchUserInfo(params.username);
     setUser(result);
   };
 
@@ -30,13 +27,22 @@ const UserView = () => {
       </div>
     );
   }
-  return  <div>
-  {params.username}
-  <div>{`RBrache21 Followers: ${user.followers}`}</div>
-  <div>{`RBrache21 Following: ${user.following}`}</div>
-  <div>{`RBrache21 Public Repos: ${user.public_repos}`}</div>
-  {console.log(user)}
-  </div>
+  return  (<div>
+    <div>
+      <div>{`${params.username}'s general info`}</div>
+      <div>{`Name: ${user.name}`}</div>
+      <div>{`Email: ${user.email}`}</div>
+      <div>{`Bio: ${user.bio}`}</div>
+      <div>{`Blog: ${user.blog}`}</div>
+    </div>
+    <div>
+      <div>{`${params.username}'s repo info`}</div>
+      <div>{`Followers: ${user.followers}`}</div>
+      <div>{`Following: ${user.following}`}</div>
+      <div>{`Public Repos: ${user.public_repos}`}</div>
+    </div>
+    {console.log(user)}
+  </div>)
 };
 
 export default UserView;

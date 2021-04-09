@@ -9,7 +9,7 @@ const octokit = new Octokit({
 const useGithubApi = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
+  // This service fetches the list of github users 
   const fetchUsers = async (limit, offset) => {
     try {
       setLoading(true);
@@ -23,12 +23,28 @@ const useGithubApi = () => {
     }
   };
 
-  const fetchUserInfo = async (limit, offset) => {
+  // This service fetches the information of a specified user
+  const fetchUserInfo = async (username) => {
     try {
       setLoading(true);
       setError(null);
       const { data: userInfo } = await octokit.rest.users.getByUsername({
-        username: 'RBrache21'
+        username: username
+      }); 
+      return userInfo;
+    } catch (error) {
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  // This service fetches the repositories of a specified user
+  const fetchUserRepos = async (username) => {
+    try {
+      setLoading(true);
+      setError(null);
+      const { data: userInfo } = await octokit.rest.repos.listForUser({
+        username: username
       }); 
       return userInfo;
     } catch (error) {
@@ -42,7 +58,8 @@ const useGithubApi = () => {
     loading,
     error,
     fetchUsers,
-    fetchUserInfo
+    fetchUserInfo,
+    fetchUserRepos
   };
 };
 
