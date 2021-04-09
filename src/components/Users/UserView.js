@@ -37,9 +37,9 @@ const UserView = () => {
     </div>
     <div>
       <div>{`${params.username}'s repo info`}</div>
+      <div>{`Public Repos: ${user.public_repos}`}</div>
       <div>{`Followers: ${user.followers}`}</div>
       <div>{`Following: ${user.following}`}</div>
-      <div>{`Public Repos: ${user.public_repos}`}</div>
     </div>
     {console.log(user)}
   </div>)

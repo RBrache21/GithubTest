@@ -1,0 +1,17 @@
+.button {
+    color: #e9eef1;
+}
+
+/* .container {
+    text-align: center;
+    min-height: 92vh;
+    margin-top: 100px;
+} */
+
+.heading {
+    font-size: 52px;
+    color: #353e44;
+    font-weight: 700;
+    line-height: 56px;
+    letter-spacing: -0.04em;
+}

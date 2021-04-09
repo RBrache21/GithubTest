@@ -38,13 +38,14 @@ const useGithubApi = () => {
       setLoading(false);
     }
   };
-  // This service fetches the repositories of a specified user
+  // This service fetches the public repositories of a specified user
   const fetchUserRepos = async (username) => {
     try {
       setLoading(true);
       setError(null);
       const { data: userInfo } = await octokit.rest.repos.listForUser({
-        username: username
+        username: username,
+        per_page: 50
       }); 
       return userInfo;
     } catch (error) {
