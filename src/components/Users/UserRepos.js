@@ -3,6 +3,7 @@ import { useParams } from 'react-router';
 import useGithubApi from '../../services/github-api';
 import Modal from 'react-modal';
 
+
 //Modal Styles
 const customStyles = {
   content : {
@@ -59,10 +60,12 @@ const UserRepos = () => {
       <Modal isOpen={modalIsOpen} style={customStyles}>
         <div>I am a modal</div>
         <button onClick={closeModal}>Close Modal</button>
+        <button>Go to Repo</button>
       </Modal>
-      
+      {console.log(repos)}
     </div>
   )
+  
 };
 
 export default UserRepos;
