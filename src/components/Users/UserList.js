@@ -32,7 +32,7 @@ const UserList = () => {
   useEffect(() => {
     getTableData();
   }, []);
-
+  // placeholder for when loading and error handling
   if (loading) {
     return <p>LOADING...</p>;
   }
@@ -44,7 +44,7 @@ const UserList = () => {
       </div>
     );
   }
- 
+ // this functions handle the pagination of the app
   const handleChangePage = (event, newPage) => {
     setPage(newPage)
   }

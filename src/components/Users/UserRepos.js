@@ -3,6 +3,14 @@ import { useParams } from 'react-router';
 import useGithubApi from '../../services/github-api';
 import Modal from 'react-modal';
 
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+
+
 
 //Modal Styles
 const customStyles = {
@@ -54,9 +62,24 @@ const UserRepos = () => {
   }
   return  (
     <div>
-    {repos.map((repo, i) =>(
-      <p style={{cursor: 'pointer'}} key={i} onClick={openModal}>{repo.full_name}</p>
-       ))}
+      <TableContainer >
+        <Table >
+          <TableHead>
+            <TableRow>
+              <TableCell align="center">#</TableCell>
+              <TableCell align="center">Repo Name</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {repos.map((repo, i) => (
+              <TableRow>
+                <TableCell align='center'>{i+1}</TableCell>
+                <TableCell align="center" style={{cursor: 'pointer'}} key={i} onClick={openModal}>{repo.full_name}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
       <Modal isOpen={modalIsOpen} style={customStyles}>
         <div>I am a modal</div>
         <button onClick={closeModal}>Close Modal</button>
@@ -69,3 +92,10 @@ const UserRepos = () => {
 };
 
 export default UserRepos;
+
+
+
+
+      // {repos.map((repo, i) =>(
+      //   <p style={{cursor: 'pointer'}} key={i} onClick={openModal}>{repo.full_name}</p>
+      //    ))}
