@@ -53,7 +53,7 @@ const UserList = () => {
                 />
               </td>
               <td>{user.login}</td>
-              <td>{<Link to={`/users/${user.login}`}>View</Link>}</td>
+              <td>{<Link to={`/users/${user.login}?per_page(100)`}>View</Link>}</td>
             </tr>
           ))}
         </tbody>
