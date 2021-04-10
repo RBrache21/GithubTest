@@ -1,16 +1,31 @@
 import React, { useEffect, useState } from 'react';
 
 import Image from 'react-bootstrap/Image';
-import Table from 'react-bootstrap/Table';
 import { Link } from 'react-router-dom';
 import useGithubApi from '../../services/github-api';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import { TablePagination } from '@material-ui/core';
+
 
 const UserList = () => {
   const [users, setUsers] = useState([]);
   const { loading, error, fetchUsers } = useGithubApi();
-  // Fetching data from the github API
+  // states used for filtering
+  const pages = [25, 50, 100]
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(pages[page])
+  //states uses for ordering 
+  const [order, serOrder] = useState()
+  const [orderBy, setOrderBy] = useState()
+ 
+  // Fetching data from the github API. The Fetch Users takes the number of users per page to display
   const getTableData = async () => {
-    const result = await fetchUsers();
+    const result = await fetchUsers(100);
     setUsers(result);
   };
 
@@ -29,37 +44,57 @@ const UserList = () => {
       </div>
     );
   }
+ 
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage)
+  }
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  }
+
+  // This function is used to filter the users list
+  const usersSlicing = () => {
+    return users.slice(page*rowsPerPage, (page+1)*rowsPerPage)
+  }
+
   return (
     <div>
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Avatar</th>
-            <th>Username</th>
-            <th>Detail View</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.map((user, i) => (
-            <tr key={i}>
-              <td>{user.id}</td>
-              <td>
-                <Image
-                  alt="avatar"
-                  src={`${user.avatar_url}`}
-                  height="100px"
-                  roundedCircle
-                />
-              </td>
-              <td>{user.login}</td>
-              <td>{<Link to={`/users/${user.login}?per_page(100)`}>View</Link>}</td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
+      <TablePagination 
+        rowsPerPageOptions={pages} 
+        component="div" 
+        count={users.length} 
+        rowsPerPage={rowsPerPage} 
+        page={page}
+        onChangePage={handleChangePage}
+        onChangeRowsPerPage={handleChangeRowsPerPage}
+      />
+      <TableContainer >
+        <Table >
+          <TableHead>
+            <TableRow>
+              <TableCell align="center">ID</TableCell>
+              <TableCell align="center">Avatar</TableCell>
+              <TableCell align="center">Username</TableCell>
+              <TableCell align="center">Detail View</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {usersSlicing().map((user, i) => (
+              <TableRow>
+                <TableCell align='center'>{user.id}</TableCell>
+                <TableCell align="center"><Image alt="avatar" src={`${user.avatar_url}`} height="50px" roundedCircle/></TableCell>
+                <TableCell align="center">{user.login}</TableCell>
+                <TableCell align="center">{<Link to={`/users/${user.login}`}>View</Link>}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </div>
   );
 };
 
 export default UserList;
+

@@ -9,12 +9,15 @@ const octokit = new Octokit({
 const useGithubApi = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  
   // This service fetches the list of github users 
   const fetchUsers = async (limit, offset) => {
     try {
       setLoading(true);
       setError(null);
-      const { data: users } = await octokit.rest.users.list();
+      const { data: users } = await octokit.rest.users.list({
+        per_page: limit
+      });
       return users;
     } catch (error) {
       setError(error);

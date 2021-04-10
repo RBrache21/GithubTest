@@ -54,9 +54,9 @@ const UserRepos = () => {
   }
   return  (
     <div>
-    <div>{repos.map((repo, i) =>(
+    {repos.map((repo, i) =>(
       <p style={{cursor: 'pointer'}} key={i} onClick={openModal}>{repo.full_name}</p>
-  ))}</div>
+       ))}
       <Modal isOpen={modalIsOpen} style={customStyles}>
         <div>I am a modal</div>
         <button onClick={closeModal}>Close Modal</button>
