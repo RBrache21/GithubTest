@@ -19,9 +19,7 @@ const UserList = () => {
   const pages = [25, 50, 100]
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(pages[page])
-  //states uses for ordering 
-  const [order, serOrder] = useState()
-  const [orderBy, setOrderBy] = useState()
+
  
   // Fetching data from the github API. The Fetch Users takes the number of users per page to display
   const getTableData = async () => {
@@ -83,7 +81,7 @@ const UserList = () => {
           <TableBody>
             {usersSlicing().map((user, i) => (
               <TableRow>
-                <TableCell align='center'>{user.id}</TableCell>
+                <TableCell align='center'>{i+1}</TableCell>
                 <TableCell align="center"><Image alt="avatar" src={`${user.avatar_url}`} height="50px" roundedCircle/></TableCell>
                 <TableCell align="center">{user.login}</TableCell>
                 <TableCell align="center">{<Link to={`/users/${user.login}`}>View</Link>}</TableCell>

@@ -50,6 +50,7 @@ export default function NavBar() {
             Github Project
           </Typography>
           <Link to={'/'}><Button color='secondary'>Home</Button></Link>
+          <Link to={'/users'}><Button color='secondary'>Users</Button></Link>
         </Toolbar>
       </AppBar>
     </ThemeProvider>

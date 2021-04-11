@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
-import './HomePage.css';
+// import './HomePage.css';
+import { HomePageContainer, Header} from './HomePage.styles'
+
 
 // The lines imported below are used to customize the color of the components used from material-ui
 import { createMuiTheme } from '@material-ui/core/styles';
@@ -20,14 +22,14 @@ const theme = createMuiTheme({
 
 const HomePage = () => {
 	return (
-		<div>
-		<ThemeProvider theme={theme}>
-			<div>
-				<h1 className='heading'>BIENVENIDOS AL PROYECTO</h1>
-				<Link to='/users'><Button variant='contained' color='secondary' className='button'>Github Users</Button></Link>
-			</div>
-		</ThemeProvider>
-		</div>
+		<HomePageContainer>
+			<ThemeProvider theme={theme}>
+				<div>
+					<Header className='heading'>Bienvenidos al proyecto.<br /> Presione el botón para continuar</Header>
+					<Link to='/users'><Button variant='contained' color='secondary' style={{color: '#e9eef1'}}>Github Users</Button></Link>
+				</div>
+			</ThemeProvider>
+		</HomePageContainer>
 	);
 }
 

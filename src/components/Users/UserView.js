@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { UserViewContainer } from './UserView.styles'
 import { useParams } from 'react-router';
 import useGithubApi from '../../services/github-api';
 import { makeStyles } from '@material-ui/core/styles';
@@ -14,7 +15,7 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
-    borderRadius: 20
+    borderRadius: 20,
   },
 });
 
@@ -44,7 +45,7 @@ const UserView = () => {
       </div>
     );
   }
-  return  <div>
+  return <UserViewContainer>
     <Card className={classes.root}>
       <CardActionArea>
         <CardMedia
@@ -94,7 +95,7 @@ const UserView = () => {
         <Button size="small" color="primary">Followers</Button>
       </CardActions>
     </Card>
-  </div>
+  </UserViewContainer>
 };
 
 export default UserView;
