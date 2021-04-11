@@ -11,11 +11,13 @@ import CardActions from '@material-ui/core/CardActions';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { block } from 'strip-comments';
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
     borderRadius: 20,
+    width: '400px',
+    height: 'auto'
   },
 });
 
@@ -46,7 +48,7 @@ const UserView = () => {
     );
   }
   return <UserViewContainer>
-    <Card className={classes.root}>
+    <Card className={classes.root} style={{margin: '50px'}}>
       <CardActionArea>
         <CardMedia
           component='img'
@@ -67,9 +69,12 @@ const UserView = () => {
           </Typography>
         </CardContent>
       </CardActionArea>
+      <CardActions>
+
+      </CardActions>
     </Card>
 
-    <Card className={classes.root}>
+    <Card className={classes.root} style={{margin: '50px'}}>
       <CardActionArea>
         <CardMedia
           component='img'
@@ -83,7 +88,7 @@ const UserView = () => {
             {`${params.username}'s repo info`}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            <div>{`Public Repos: ${user.public_repos}`}</div>
+            <div >{`Public Repos: ${user.public_repos}`}</div>
             <div>{`Followers: ${user.followers}`}</div>
             <div>{`Following: ${user.following}`}</div>
           </Typography>

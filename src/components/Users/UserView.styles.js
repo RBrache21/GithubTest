@@ -5,6 +5,8 @@ export const UserViewContainer = styled.div`
     text-align: center;
     background-color: #e9eef1;
     display: flex;
+    flex-direction: row;
+    justify-content: center;
     padding: 100px;
-    margin-top: 60px;
+    margin-top: 40px;
 `

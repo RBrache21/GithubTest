@@ -72,7 +72,7 @@ const UserList = () => {
         <Table >
           <TableHead>
             <TableRow>
-              <TableCell align="center">ID</TableCell>
+              <TableCell align="center">Github Id</TableCell>
               <TableCell align="center">Avatar</TableCell>
               <TableCell align="center">Username</TableCell>
               <TableCell align="center">Detail View</TableCell>
@@ -81,7 +81,7 @@ const UserList = () => {
           <TableBody>
             {usersSlicing().map((user, i) => (
               <TableRow>
-                <TableCell align='center'>{i+1}</TableCell>
+                <TableCell align='center'>{user.id}</TableCell>
                 <TableCell align="center"><Image alt="avatar" src={`${user.avatar_url}`} height="50px" roundedCircle/></TableCell>
                 <TableCell align="center">{user.login}</TableCell>
                 <TableCell align="center">{<Link to={`/users/${user.login}`}>View</Link>}</TableCell>
