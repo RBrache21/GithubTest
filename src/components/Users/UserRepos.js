@@ -8,7 +8,9 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-
+import Button from '@material-ui/core/Button';
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 
 
 // Modal Styles
@@ -27,7 +29,7 @@ Modal.setAppElement('#root')
 
 const UserRepos = () => {
   const [repos, setRepos] = useState([]);
-  const [modalIsOpen,setIsOpen] = useState(false);
+  const [modalIsOpen, setIsOpen] = useState(false);
   const params = useParams();
   const { loading, error, fetchUserRepos } = useGithubApi();
   // Fetching data from the github API
@@ -47,6 +49,17 @@ const UserRepos = () => {
   useEffect(() => {
     getUserData();
   }, []);
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#e9eef1',
+    },
+    secondary: {
+      main: '#00b7ba',
+    },
+  },
+});
 
   if (loading) {
     return <p>LOADING...</p>;
@@ -80,9 +93,13 @@ const UserRepos = () => {
         </Table>
       </TableContainer>
       <Modal isOpen={modalIsOpen} style={modalStyles}>
-        <div>I am a modal</div>
-        <button onClick={closeModal}>Close Modal</button>
-        <button>Go to Repo</button>
+        <ThemeProvider theme={theme}>
+          <div>This Modal is supposed to display the repo information</div>
+          <div style={{'text-align': 'center'}}>
+            <Button variant='contained' color='secondary' style={{color: '#e9eef1'}} onClick={closeModal}>Close Modal</Button>
+            <Button variant='contained' color='secondary' style={{color: '#e9eef1'}}>Go to Repo</Button>
+          </div>
+        </ThemeProvider>
       </Modal>
       {console.log(repos)}
     </div>

@@ -48,7 +48,7 @@ const useGithubApi = () => {
       setError(null);
       const { data: userInfo } = await octokit.rest.repos.listForUser({
         username: username,
-        per_page: 50
+        per_page: 100
       }); 
       return userInfo;
     } catch (error) {
