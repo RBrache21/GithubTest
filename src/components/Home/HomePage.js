@@ -4,7 +4,6 @@ import Button from '@material-ui/core/Button';
 // import './HomePage.css';
 import { HomePageContainer, Header} from './HomePage.styles'
 
-
 // The lines imported below are used to customize the color of the components used from material-ui
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';

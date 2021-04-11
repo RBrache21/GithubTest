@@ -9,4 +9,5 @@ export const UserViewContainer = styled.div`
     justify-content: center;
     padding: 100px;
     margin-top: 40px;
+    height: 100vh;
 `

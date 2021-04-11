@@ -16,7 +16,7 @@ import { ThemeProvider } from '@material-ui/styles';
 // Modal Styles
 const modalStyles = {
   content : {
-    top                   : '50%',
+    top                   : '40%',
     left                  : '50%',
     right                 : 'auto',
     bottom                : 'auto',
@@ -84,9 +84,9 @@ const theme = createMuiTheme({
           </TableHead>
           <TableBody>
             {repos.map((repo, i) => (
-              <TableRow>
+              <TableRow key={i}>
                 <TableCell align='center'>{i+1}</TableCell>
-                <TableCell align="center" style={{cursor: 'pointer'}} key={i} onClick={openModal}>{repo.full_name}</TableCell>
+                <TableCell align="center" style={{cursor: 'pointer'}} onClick={openModal}>{repo.full_name}</TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -95,7 +95,7 @@ const theme = createMuiTheme({
       <Modal isOpen={modalIsOpen} style={modalStyles}>
         <ThemeProvider theme={theme}>
           <div>This Modal is supposed to display the repo information</div>
-          <div style={{'text-align': 'center'}}>
+          <div style={{'textAlign': 'center'}}>
             <Button variant='contained' color='secondary' style={{color: '#e9eef1'}} onClick={closeModal}>Close Modal</Button>
             <Button variant='contained' color='secondary' style={{color: '#e9eef1'}}>Go to Repo</Button>
           </div>

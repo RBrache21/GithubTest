@@ -11,13 +11,12 @@ import CardActions from '@material-ui/core/CardActions';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { block } from 'strip-comments';
 
 const useStyles = makeStyles({
   root: {
     borderRadius: 20,
     width: '400px',
-    height: 'auto'
+    height: '350px'
   },
 });
 
@@ -53,7 +52,7 @@ const UserView = () => {
         <CardMedia
           component='img'
           alt="User Avatar"
-          height="140"
+          height="160"
           image={`${user.avatar_url}`}
           title="Contemplative Reptile"
         />
@@ -69,9 +68,6 @@ const UserView = () => {
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
-
-      </CardActions>
     </Card>
 
     <Card className={classes.root} style={{margin: '50px'}}>
