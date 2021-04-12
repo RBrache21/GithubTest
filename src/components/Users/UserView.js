@@ -37,12 +37,12 @@ const UserView = () => {
   }, []);
 
   if (loading) {
-    return <p>LOADING...</p>;
+    return <p>Cargando...</p>;
   }
   if (error) {
     return (
       <div>
-        <p>Theres was an error {error.message}</p>
+        <p>Error! {error.message}</p>
         <button onClick={getUserData}>Retry</button>
       </div>
     );
@@ -59,10 +59,10 @@ const UserView = () => {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            {`${params.username}'s general info`}
+            {`Información general de ${params.username}`}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            <div>{`Name: ${user.name}`}</div>
+            <div>{`Nombre: ${user.name}`}</div>
             <div>{`Email: ${user.email}`}</div>
             <div>{`Bio: ${user.bio}`}</div>
             <div>{`Blog: ${user.blog}`}</div>
@@ -82,19 +82,19 @@ const UserView = () => {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            {`${params.username}'s repo info`}
+            {`Información de Github de ${params.username}`}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            <div >{`Public Repos: ${user.public_repos}`}</div>
-            <div>{`Followers: ${user.followers}`}</div>
-            <div>{`Following: ${user.following}`}</div>
+            <div >{`Repos públicos: ${user.public_repos}`}</div>
+            <div>{`Seguidores: ${user.followers}`}</div>
+            <div>{`Siguiendo: ${user.following}`}</div>
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Link to={`/users/${user.login}/repos`}><Button size="small" color="primary">Repos</Button></Link>
-        <Button size="small" color="primary">Following</Button>
-        <Button size="small" color="primary">Followers</Button>
+        <Link to={`/users/${user.login}/repos`}><Button size="small" color="primary">Repositorios</Button></Link>
+        <Button size="small" color="primary">Siguiendo</Button>
+        <Button size="small" color="primary">Seguidores</Button>
       </CardActions>
     </Card>
   </UserViewContainer>

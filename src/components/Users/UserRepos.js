@@ -102,8 +102,8 @@ const theme = createMuiTheme({
           <div>{`Descripcion del repo: ${repoInfo.description}`}</div>
           <div>{`Lenguaje principal del repo: ${repoInfo.language}`}</div>
           <div style={{'textAlign': 'center', 'margin': '20px'}}>
-            <Button variant='contained' color='secondary' style={{'color': '#e9eef1', 'marginRight': '20px'}} onClick={closeModal}>Close Modal</Button>
-            <a target='_blank' rel="noreferrer" href={`https://github.com/${repoInfo.full_name}`}><Button variant='contained' color='secondary' style={{color: '#e9eef1'}}>Go to Repo</Button></a>
+            <Button variant='contained' color='secondary' style={{'color': '#e9eef1', 'marginRight': '20px'}} onClick={closeModal}>Cerrar Modal</Button>
+            <a target='_blank' rel="noreferrer" href={`https://github.com/${repoInfo.full_name}`}><Button variant='contained' color='secondary' style={{color: '#e9eef1'}}>Ir al Repo</Button></a>
           </div>
         </ThemeProvider>
       </Modal>

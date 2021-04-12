@@ -33,12 +33,12 @@ const UserList = () => {
   }, []);
   // placeholder for when loading and error handling
   if (loading) {
-    return <p>LOADING...</p>;
+    return <p>Cargando...</p>;
   }
   if (error) {
     return (
       <div>
-        <p>Theres was an error {error.message}</p>
+        <p>Error! {error.message}</p>
         <button onClick={getTableData}>Retry</button>
       </div>
     );
@@ -75,8 +75,8 @@ const UserList = () => {
             <TableRow>
               <TableCell align="center">Github Id</TableCell>
               <TableCell align="center">Avatar</TableCell>
-              <TableCell align="center">Username</TableCell>
-              <TableCell align="center">Detail View</TableCell>
+              <TableCell align="center">Usuario</TableCell>
+              <TableCell align="center">Vista Detallada</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -85,7 +85,7 @@ const UserList = () => {
                 <TableCell align='center'>{user.id}</TableCell>
                 <TableCell align="center"><Image alt="avatar" src={`${user.avatar_url}`} height="50px" roundedCircle/></TableCell>
                 <TableCell align="center">{user.login}</TableCell>
-                <TableCell align="center">{<Link to={`/users/${user.login}`}>View</Link>}</TableCell>
+                <TableCell align="center">{<Link to={`/users/${user.login}`}>Vista</Link>}</TableCell>
               </TableRow>
             ))}
           </TableBody>

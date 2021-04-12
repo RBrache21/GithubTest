@@ -24,7 +24,7 @@ const HomePage = () => {
 			<ThemeProvider theme={theme}>
 				<div>
 					<Header className='heading'>Bienvenidos al proyecto.<br /> Presione el botón para continuar</Header>
-					<Link to='/users'><Button variant='contained' color='secondary' style={{color: '#e9eef1'}}>Github Users</Button></Link>
+					<Link to='/users'><Button variant='contained' color='secondary' style={{'color': '#e9eef1', 'marginTop': '20px'}}>Usuarios de Github</Button></Link>
 				</div>
 			</ThemeProvider>
 		</HomePageContainer>
