@@ -79,7 +79,7 @@ const UserList = () => {
           </TableHead>
           <TableBody>
             {usersSlicing().map((user, i) => (
-              <TableRow>
+              <TableRow key={i}>
                 <TableCell align='center'>{user.id}</TableCell>
                 <TableCell align="center"><Image alt="avatar" src={`${user.avatar_url}`} height="50px" roundedCircle/></TableCell>
                 <TableCell align="center">{user.login}</TableCell>

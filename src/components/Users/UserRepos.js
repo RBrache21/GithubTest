@@ -29,6 +29,7 @@ Modal.setAppElement('#root')
 
 const UserRepos = () => {
   const [repos, setRepos] = useState([]);
+  const [repoInfo, setRepoInfo] = useState({});
   const [modalIsOpen, setIsOpen] = useState(false);
   const params = useParams();
   const { loading, error, fetchUserRepos } = useGithubApi();
@@ -38,7 +39,8 @@ const UserRepos = () => {
     setRepos(result);
   };
 
-  const openModal = () => {
+  const openModal = (repositorio) => {
+    setRepoInfo(repositorio);
     setIsOpen(true);
   }
 
@@ -86,7 +88,7 @@ const theme = createMuiTheme({
             {repos.map((repo, i) => (
               <TableRow key={i}>
                 <TableCell align='center'>{i+1}</TableCell>
-                <TableCell align="center" style={{cursor: 'pointer'}} onClick={openModal}>{repo.full_name}</TableCell>
+                <TableCell align="center" style={{cursor: 'pointer'}} onClick={() => {openModal(repo)}}>{repo.full_name}</TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -94,14 +96,15 @@ const theme = createMuiTheme({
       </TableContainer>
       <Modal isOpen={modalIsOpen} style={modalStyles}>
         <ThemeProvider theme={theme}>
-          <div>This Modal is supposed to display the repo information</div>
-          <div style={{'textAlign': 'center'}}>
-            <Button variant='contained' color='secondary' style={{color: '#e9eef1'}} onClick={closeModal}>Close Modal</Button>
-            <Button variant='contained' color='secondary' style={{color: '#e9eef1'}}>Go to Repo</Button>
+          <div>{`Nombre del repo: ${repoInfo.name}`}</div>
+          <div>{`Descripcion del repo: ${repoInfo.description}`}</div>
+          <div>{`Lenguaje principal del repo: ${repoInfo.language}`}</div>
+          <div style={{'textAlign': 'center', 'margin': '20px'}}>
+            <Button variant='contained' color='secondary' style={{'color': '#e9eef1', 'marginRight': '20px'}} onClick={closeModal}>Close Modal</Button>
+            <a target='_blank' rel="noreferrer" href={`https://github.com/${repoInfo.full_name}`}><Button variant='contained' color='secondary' style={{color: '#e9eef1'}}>Go to Repo</Button></a>
           </div>
         </ThemeProvider>
       </Modal>
-      {console.log(repos)}
     </div>
   )
   

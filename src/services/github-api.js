@@ -11,7 +11,7 @@ const useGithubApi = () => {
   const [error, setError] = useState(null);
   
   // This service fetches the list of github users 
-  const fetchUsers = async (limit, offset) => {
+  const fetchUsers = async (limit) => {
     try {
       setLoading(true);
       setError(null);

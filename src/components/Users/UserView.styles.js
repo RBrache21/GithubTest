@@ -11,3 +11,4 @@ export const UserViewContainer = styled.div`
     margin-top: 40px;
     height: 100vh;
 `
+
