@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import Image from 'react-bootstrap/Image';
 import { Link } from 'react-router-dom';
@@ -20,7 +21,8 @@ const UserList = () => {
   const [rowsPerPage, setRowsPerPage] = useState(pages[page])
 
  
-  // Fetching data from the github API. The Fetch Users takes the number of users per page to display
+  // Fetching data from the github API. The Fetch Users takes the number of users per page to display. 
+  // fetchUsers takes the number of users to fetch as an argument
   const getTableData = async () => {
     const result = await fetchUsers(100);
     setUsers(result);

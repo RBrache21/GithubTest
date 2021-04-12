@@ -5,11 +5,12 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
-
+// // The lines imported below are used to customize the color of the components used from material-ui
+ 
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 
-
+// this theme is used to change the properties of the material-ui components
 const theme = createMuiTheme({
   status: {
     danger: '#e53e3e',

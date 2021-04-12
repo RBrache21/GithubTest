@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import useGithubApi from '../../services/github-api';
@@ -38,7 +39,8 @@ const UserRepos = () => {
     const result = await fetchUserRepos(params.username);
     setRepos(result);
   };
-
+  // this function updates the state of the modal
+  // this function also updates the state to hold the information of the clicked repository
   const openModal = (repositorio) => {
     setRepoInfo(repositorio);
     setIsOpen(true);
@@ -76,7 +78,7 @@ const theme = createMuiTheme({
   }
   return  (
     <div>
-      <TableContainer >
+      <TableContainer>
         <Table >
           <TableHead>
             <TableRow>

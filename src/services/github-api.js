@@ -10,7 +10,7 @@ const useGithubApi = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   
-  // This service fetches the list of github users 
+  // This service fetches the list of github users. The limit parameter is used to specify the # of users to fetch when the function is called
   const fetchUsers = async (limit) => {
     try {
       setLoading(true);
@@ -26,7 +26,8 @@ const useGithubApi = () => {
     }
   };
 
-  // This service fetches the information of a specified user
+  // This service fetches the information of a specified user.
+  // takes a username parameter that is used to fetch the information of that username
   const fetchUserInfo = async (username) => {
     try {
       setLoading(true);
